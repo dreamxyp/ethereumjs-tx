@@ -1,6 +1,6 @@
 {
   "name": "happyucjs-tx",
-  "version": "1.3.4",
+  "version": "1.0.1",
   "description": "An simple module for creating, manipulating and signing happyuc transactions",
   "main": "es5/index.js",
   "scripts": {
@@ -21,10 +21,8 @@
   "license": "MPL-2.0",
   "dependencies": {
     "bn.js": "^4.11.0",
-    //"happyucjs-common": "/Users/dreamxyp/Transcend/happyuc-js/common/",
-    //"happyucjs-util": "/Users/dreamxyp/Transcend/happyuc-js/util/"
-    "happyucjs-common": "https://github.com/happyucjs/happyucjs-common.git",
-    "happyucjs-util": "https://github.com/happyucjs/happyucjs-util.git"
+    "happyucjs-common": "^1.0.1",
+    "happyucjs-util": "^1.0.1"
   },
   "devDependencies": {
     "async": "^2.0.0",
