@@ -1,4 +1,5 @@
 'use strict'
+
 const hucUtil = require('happyucjs-util')
 const fees = require('happyucjs-common/params.json')
 const BN = hucUtil.BN
