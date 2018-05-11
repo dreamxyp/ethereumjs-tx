@@ -1,4 +1,3 @@
-
 # Created by https://www.gitignore.io/api/osx,node
 
 es5
@@ -77,3 +76,5 @@ jspm_packages
 # Yarn Integrity file
 .yarn-integrity
 
+# Jetbrains IDE cache
+.idea/
