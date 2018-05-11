@@ -22,7 +22,7 @@
   "dependencies": {
     "bn.js": "^4.11.0",
     "happyucjs-common": "^1.0.1",
-    "happyucjs-util": "^1.0.1"
+    "happyucjs-util": "^1.0.6"
   },
   "devDependencies": {
     "async": "^2.0.0",
