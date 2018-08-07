@@ -47,7 +47,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/icjs/icjs-tx.git"
+    "url": "git+https://github.com/icjs/icjs-tx.git"
   },
   "bugs": {
     "url": "https://github.com/icjs/icjs-tx/issues"
@@ -61,5 +61,10 @@
       "package.js"
     ]
   },
-  "contributors": []
+  "contributors": [],
+  "directories": {
+    "doc": "docs",
+    "example": "examples",
+    "test": "test"
+  }
 }
