@@ -1,8 +1,8 @@
 'use strict'
 
-const hucUtil = require('happyucjs-util')
-const fees = require('happyucjs-common/params.json')
-const BN = hucUtil.BN
+const ircUtil = require('icjs-util')
+const fees = require('icjs-common/params.json')
+const BN = ircUtil.BN
 
 // secp256k1n/2
 const N_DIV_2 = new BN('7fffffffffffffffffffffffffffffff5d576e7357a4501ddfe92f46681b20a0', 16)
@@ -36,66 +36,67 @@ const N_DIV_2 = new BN('7fffffffffffffffffffffffffffffff5d576e7357a4501ddfe92f46
  * @param {Buffer} data.gasLimit transaction gas limit
  * @param {Buffer} data.gasPrice transaction gas price
  * @param {Buffer} data.to to the to address
- * @param {Buffer} data.value the amount of huc sent
+ * @param {Buffer} data.value the amount of irc sent
  * @param {Buffer} data.data this will contain the data of the message or the init of a contract
  * @param {Buffer} data.v EC recovery ID
  * @param {Buffer} data.r EC signature parameter
  * @param {Buffer} data.s EC signature parameter
  * @param {Number} data.chainId EIP 155 chainId - mainnet: 1, ropsten: 3
- * */
+ */
 
 class Transaction {
   constructor (data) {
     data = data || {}
     // Define Properties
-    const fields = [{
-      name: 'nonce',
-      length: 32,
-      allowLess: true,
-      default: new Buffer([])
-    }, {
-      name: 'gasPrice',
-      length: 32,
-      allowLess: true,
-      default: new Buffer([])
-    }, {
-      name: 'gasLimit',
-      alias: 'gas',
-      length: 32,
-      allowLess: true,
-      default: new Buffer([])
-    }, {
-      name: 'to',
-      allowZero: true,
-      length: 20,
-      default: new Buffer([])
-    }, {
-      name: 'value',
-      length: 32,
-      allowLess: true,
-      default: new Buffer([])
-    }, {
-      name: 'data',
-      alias: 'input',
-      allowZero: true,
-      default: new Buffer([])
-    }, {
-      name: 'v',
-      allowZero: true,
-      default: new Buffer([0x1c])
-    }, {
-      name: 'r',
-      length: 32,
-      allowZero: true,
-      allowLess: true,
-      default: new Buffer([])
-    }, {
-      name: 's',
-      length: 32,
-      allowZero: true,
-      allowLess: true,
-      default: new Buffer([])
-    }]
+    const fields = [
+      {
+        name: 'nonce',
+        length: 32,
+        allowLess: true,
+        default: Buffer.form([]),
+      }, {
+        name: 'gasPrice',
+        length: 32,
+        allowLess: true,
+        default: Buffer.form([]),
+      }, {
+        name: 'gasLimit',
+        alias: 'gas',
+        length: 32,
+        allowLess: true,
+        default: Buffer.form([]),
+      }, {
+        name: 'to',
+        allowZero: true,
+        length: 20,
+        default: Buffer.form([]),
+      }, {
+        name: 'value',
+        length: 32,
+        allowLess: true,
+        default: Buffer.form([]),
+      }, {
+        name: 'data',
+        alias: 'input',
+        allowZero: true,
+        default: Buffer.form([]),
+      }, {
+        name: 'v',
+        allowZero: true,
+        default: Buffer.form([0x1c]),
+      }, {
+        name: 'r',
+        length: 32,
+        allowZero: true,
+        allowLess: true,
+        default: Buffer.form([]),
+      }, {
+        name: 's',
+        length: 32,
+        allowZero: true,
+        allowLess: true,
+        default: Buffer.form([]),
+      }]
 
     /**
      * Returns the rlp encoding of the transaction
@@ -105,7 +106,7 @@ class Transaction {
      * @name serialize
      */
     // attached serialize
-    hucUtil.defineProperties(this, fields, data)
+    ircUtil.defineProperties(this, fields, data)
 
     /**
      * @property {Buffer} from (read only) sender address of this transaction, mathematically derived from other parameters.
@@ -115,11 +116,11 @@ class Transaction {
     Object.defineProperty(this, 'from', {
       enumerable: true,
       configurable: true,
-      get: this.getSenderAddress.bind(this)
+      get: this.getSenderAddress.bind(this),
     })
 
     // calculate chainId from signature
-    let sigV = hucUtil.bufferToInt(this.v)
+    let sigV = ircUtil.bufferToInt(this.v)
     let chainId = Math.floor((sigV - 35) / 2)
     if (chainId < 0) chainId = 0
 
@@ -166,7 +167,7 @@ class Transaction {
     }
 
     // create hash
-    return hucUtil.rlphash(items)
+    return ircUtil.rlphash(items)
   }
 
   /**
@@ -186,7 +187,7 @@ class Transaction {
       return this._from
     }
     const pubkey = this.getSenderPublicKey()
-    this._from = hucUtil.publicToAddress(pubkey)
+    this._from = ircUtil.publicToAddress(pubkey)
     return this._from
   }
 
@@ -213,11 +214,11 @@ class Transaction {
     }
 
     try {
-      let v = hucUtil.bufferToInt(this.v)
+      let v = ircUtil.bufferToInt(this.v)
       if (this._chainId > 0) {
         v -= this._chainId * 2 + 8
       }
-      this._senderPubKey = hucUtil.ecrecover(msgHash, v, this.r, this.s)
+      this._senderPubKey = ircUtil.ecrecover(msgHash, v, this.r, this.s)
     } catch (e) {
       return false
     }
@@ -231,7 +232,7 @@ class Transaction {
    */
   sign (privateKey) {
     const msgHash = this.hash(false)
-    const sig = hucUtil.ecsign(msgHash, privateKey)
+    const sig = ircUtil.ecsign(msgHash, privateKey)
     if (this._chainId > 0) {
       sig.v += this._chainId * 2 + 8
     }

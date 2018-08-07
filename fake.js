@@ -1,7 +1,7 @@
 'use strict'
 
 const Transaction = require('./index.js')
-const hucUtil = require('happyucjs-util')
+const ircUtil = require('icjs-util')
 
 /**
  * Creates a new transaction object that doesn't need to be signed
@@ -25,7 +25,7 @@ const hucUtil = require('happyucjs-util')
  * @prop {Buffer} raw The raw rlp decoded transaction
  * @prop {Buffer} nonce
  * @prop {Buffer} to the to address
- * @prop {Buffer} value the amount of huc sent
+ * @prop {Buffer} value the amount of irc sent
  * @prop {Buffer} data this will contain the data of the message or the init of a contract
  * @prop {Buffer} v EC recovery ID
  * @prop {Buffer} r EC signature parameter
@@ -45,7 +45,7 @@ module.exports = class FakeTransaction extends Transaction {
       configurable: true,
       get: this.getSenderAddress.bind(self),
       set: function (val) {
-        self._from = hucUtil.toBuffer(val)
+        self._from = ircUtil.toBuffer(val)
       }
     })
 

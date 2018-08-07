@@ -1,20 +1,20 @@
 # SYNOPSIS 
-[![NPM Package](https://img.shields.io/npm/v/happyucjs-tx.svg?style=flat-square)](https://www.npmjs.org/package/happyucjs-tx)
-[![Build Status](https://travis-ci.org/happyucjs/happyucjs-tx.svg?branch=master)](https://travis-ci.org/happyucjs/happyucjs-tx)
-[![Coverage Status](https://img.shields.io/coveralls/happyucjs/happyucjs-tx.svg?style=flat-square)](https://coveralls.io/r/happyucjs/happyucjs-tx)
-[![Gitter](https://img.shields.io/gitter/room/happyucjs/happyucjs-lib.svg?style=flat-square)](https://gitter.im/happyucjs/happyucjs-lib) or #happyucjs on freenode  
+[![NPM Package](https://img.shields.io/npm/v/icjs-tx.svg?style=flat-square)](https://www.npmjs.org/package/icjs-tx)
+[![Build Status](https://travis-ci.org/icjs/icjs-tx.svg?branch=master)](https://travis-ci.org/icjs/icjs-tx)
+[![Coverage Status](https://img.shields.io/coveralls/icjs/icjs-tx.svg?style=flat-square)](https://coveralls.io/r/icjs/icjs-tx)
+[![Gitter](https://img.shields.io/gitter/room/icjs/icjs-lib.svg?style=flat-square)](https://gitter.im/icjs/icjs-lib) or #icjs on freenode
 
 [![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)  
 
 # INSTALL
-`npm install happyucjs-tx`
+`npm install icjs-tx`
 
 # USAGE
 
-  - [example](https://github.com/happyucjs/happyucjs-tx/blob/master/examples/transactions.js)
+  - [example](https://github.com/icjs/icjs-tx/blob/master/examples/transactions.js)
 
 ```javascript
-const HappyUCTx = require('happyucjs-tx')
+const IrcTx = require('icjs-tx')
 const privateKey = Buffer.from('e331b6d69882b4cb4ea581d88e0b604039a3de5967688d3dcffdd2270c0fd109', 'hex')
 
 const txParams = {
@@ -28,7 +28,7 @@ const txParams = {
   chainId: 3
 }
 
-const tx = new HappyUCTx(txParams)
+const tx = new IrcTx(txParams)
 tx.sign(privateKey)
 const serializedTx = tx.serialize()
 ```
@@ -37,7 +37,7 @@ const serializedTx = tx.serialize()
 
 
 # BROWSER  
-For a browser build please see https://github.com/happyucjs/browser-builds.
+For a browser build please see https://github.com/icjs/browser-builds.
 
 # API
 [./docs/](./docs/index.md)

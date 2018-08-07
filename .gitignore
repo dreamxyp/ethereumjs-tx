@@ -1,6 +1,6 @@
 # Created by https://www.gitignore.io/api/osx,node
 
-es5
+dist
 
 ### OSX ###
 *.DS_Store
@@ -75,6 +75,7 @@ jspm_packages
 
 # Yarn Integrity file
 .yarn-integrity
+yarn.lock
 
 # Jetbrains IDE cache
 .idea/

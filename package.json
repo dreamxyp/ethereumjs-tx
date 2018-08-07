@@ -1,8 +1,8 @@
 {
-  "name": "happyucjs-tx",
-  "version": "1.0.2",
-  "description": "An simple module for creating, manipulating and signing happyuc transactions",
-  "main": "es5/index.js",
+  "name": "icjs-tx",
+  "version": "0.0.1",
+  "description": "An simple module for creating, manipulating and signing irchain transactions",
+  "main": "dist/index.js",
   "scripts": {
     "coverage": "istanbul cover ./test/index.js",
     "coveralls": "npm run coverage && coveralls <coverage/lcov.info",
@@ -10,19 +10,19 @@
     "test": "npm run test:node && npm run test:browser",
     "test:browser": "karma start karma.conf.js",
     "test:node": "tape ./test/index.js",
-    "build:es5": "babel index.js --source-root ./ -d ./es5",
-    "build:docs": "documentation --github  -f md ./index.js > ./docs/index.md && contributor"
+    "build:dist": "babel index.js --source-root ./ -d ./dist",
+    "build:docs": "documentation build index.js -f md > ./docs/index.md && contributor"
   },
   "keywords": [
-    "happyuc",
+    "irchain",
     "transactions"
   ],
-  "author": "mjbecze <mb@ethdev.com>",
+  "author": "IrChain Team <contact@irchain.io>",
   "license": "MPL-2.0",
   "dependencies": {
     "bn.js": "^4.11.0",
-    "happyucjs-common": "^1.0.1",
-    "happyucjs-util": "^1.0.6"
+    "icjs-common": "^0.0.1",
+    "icjs-util": "^0.0.1"
   },
   "devDependencies": {
     "async": "^2.0.0",
@@ -33,7 +33,7 @@
     "browserify": "^13.0.0",
     "contributor": "^0.1.25",
     "coveralls": "^2.11.4",
-    "documentation": "^3.0.4",
+    "documentation": "^8.1.0",
     "istanbul": "^0.4.1",
     "karma": "^1.1.1",
     "karma-browserify": "*",
@@ -42,20 +42,20 @@
     "karma-firefox-launcher": "^1.0.0",
     "karma-tap": "^2.0.1",
     "minimist": "^1.2.0",
-    "standard": "^7.1.2",
-    "tape": "^4.0.3"
+    "standard": "^11.0.1",
+    "tape": "^4.9.1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/happyucjs/happyucjs-tx.git"
+    "url": "https://github.com/icjs/icjs-tx.git"
   },
   "bugs": {
-    "url": "https://github.com/happyucjs/happyucjs-tx/issues"
+    "url": "https://github.com/icjs/icjs-tx/issues"
   },
-  "homepage": "https://github.com/happyucjs/happyucjs-tx",
+  "homepage": "https://github.com/icjs/icjs-tx",
   "standard": {
     "ignore": [
-      "es5/**",
+      "dist/**",
       "dist/**",
       "package-init.js",
       "package.js"
