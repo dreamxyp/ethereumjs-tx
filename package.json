@@ -4,11 +4,9 @@
   "description": "An simple module for creating, manipulating and signing irchain transactions",
   "main": "dist/index.js",
   "scripts": {
-    "coverage": "istanbul cover ./test/index.js",
+    "coverage": "istanbul cover ./test/index.s",
     "coveralls": "npm run coverage && coveralls <coverage/lcov.info",
     "lint": "standard",
-    "test": "npm run test:node && npm run test:browser",
-    "test:browser": "karma start karma.conf.js",
     "test:node": "tape ./test/index.js",
     "build:dist": "babel index.js --source-root ./ -d ./dist",
     "build:docs": "documentation build index.js -f md > ./docs/index.md && contributor"
@@ -35,12 +33,6 @@
     "coveralls": "^2.11.4",
     "documentation": "^8.1.0",
     "istanbul": "^0.4.1",
-    "karma": "^1.1.1",
-    "karma-browserify": "*",
-    "karma-detect-browsers": "^2.0.2",
-    "karma-env-preprocessor": "^0.1.1",
-    "karma-firefox-launcher": "^1.0.0",
-    "karma-tap": "^2.0.1",
     "minimist": "^1.2.0",
     "standard": "^11.0.1",
     "tape": "^4.9.1"
