@@ -11,7 +11,7 @@ tape('[FakeTransaction]: Basic functions', function (t) {
       nonce: '0x01',
       to: '0xd9024df085d09398ec76fbed18cac0e1149f50dc',
       value: '0x0',
-      from: '0x1111111111111111111111111111111111111111',
+      from: '0x1111111111111111111111111111111111111111'
     }
     var modifiedFromFieldTxData = Object.assign({}, baseTxData, {from: '0x2222222222222222222222222222222222222222'})
     var baseTx = new FakeTransaction(baseTxData)
